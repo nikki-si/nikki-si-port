@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Проекты — Портфолио Васильевской В.В.</title>
+  <link rel="stylesheet" href="../styles/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1 class="header__title">Портфолио Васильевской В.В.</h1>
+    </header>
+
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+        <li class="nav__item nav__item--active"><a class="nav__link" href="projects.html">Проекты</a></li>
+        <li class="nav__item"><a class="nav__link" href="diary.html">Дневник</a></li>
+        <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <main class="main">
+      <section class="projects-page">
+        <h2 class="projects-page__title">Мои проекты</h2>
+        <div class="projects-page__filters">
+          <button class="filter-btn filter-btn--active">Все</button>
+          <button class="filter-btn">HTML</button>
+          <button class="filter-btn">JS</button>
+          <button class="filter-btn">React</button>
+        </div>
+
+        <div class="projects__grid">
+          <div class="project-card">
+            <h3 class="project-card__title">Личный сайт</h3>
+            <p class="project-card__desc">HTML, CSS, Bootstrap</p>
+          </div>
+          <div class="project-card">
+            <h3 class="project-card__title">Todo-приложение</h3>
+            <p class="project-card__desc">JavaScript, LocalStorage</p>
+          </div>
+          <div class="project-card">
+            <h3 class="project-card__title">Интернет-магазин</h3>
+            <p class="project-card__desc">React, REST API</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__text">&copy; 2025 Контакты</p>
+    </footer>
+  </div>
+</body>
+</html>
