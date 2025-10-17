@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дневник — Портфолио Васильевской В.В.</title>
+  <link rel="stylesheet" href="../styles/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1 class="header__title">Портфолио Васильевской В.В.</h1>
+    </header>
+
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+        <li class="nav__item"><a class="nav__link" href="projects.html">Проекты</a></li>
+        <li class="nav__item nav__item--active"><a class="nav__link" href="diary.html">Дневник</a></li>
+        <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <main class="main">
+      <section class="diary">
+        <h2 class="diary__title">Мой учебный прогресс</h2>
+        <ul class="diary__entries">
+          <li class="diary__entry diary__entry--done">
+            <span class="diary__date">15 окт</span> — Верстка макета сайта ✓
+          </li>
+          <li class="diary__entry diary__entry--done">
+            <span class="diary__date">10 окт</span> — JavaScript основы ✓
+          </li>
+          <li class="diary__entry diary__entry--in-progress">
+            <span class="diary__date">05 окт</span> — Работа с формами — в процессе
+          </li>
+          <li class="diary__entry diary__entry--in-progress">
+            <span class="diary__date">01 окт</span> — Адаптивный дизайн — в процессе
+          </li>
+        </ul>
+
+        <h3 class="diary__courses-title">Текущие курсы</h3>
+        <div class="diary__course">
+          <div class="diary__course-header">
+            <span>Веб-разработка</span>
+            <span>90%</span>
+          </div>
+          <div class="diary__progress-bar">
+            <div class="diary__progress-fill" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="diary__course">
+          <div class="diary__course-header">
+            <span>JavaScript</span>
+            <span>70%</span>
+          </div>
+          <div class="diary__progress-bar">
+            <div class="diary__progress-fill" style="width: 70%"></div>
+          </div>
+        </div>
+        <div class="diary__course">
+          <div class="diary__course-header">
+            <span>React</span>
+            <span>50%</span>
+          </div>
+          <div class="diary__progress-bar">
+            <div class="diary__progress-fill" style="width: 50%"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__text">&copy; 2025 Контакты</p>
+    </footer>
+  </div>
+</body>
+</html>
