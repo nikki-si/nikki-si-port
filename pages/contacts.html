@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакты — Портфолио Васильевской В.В.</title>
+  <link rel="stylesheet" href="../styles/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1 class="header__title">Портфолио Васильевской В.В.</h1>
+    </header>
+
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="../index.html">Главная</a></li>
+        <li class="nav__item"><a class="nav__link" href="projects.html">Проекты</a></li>
+        <li class="nav__item"><a class="nav__link" href="diary.html">Дневник</a></li>
+        <li class="nav__item nav__item--active"><a class="nav__link" href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <main class="main">
+      <section class="contacts">
+        <h2 class="contacts__title">Свяжитесь со мной</h2>
+        <button class="contacts__btn" onclick="contactModal.showModal()">Открыть форму</button>
+
+        <div class="contacts__info">
+          <p>📧 nikki.general@mail.ru</p>
+          <p>📱 GitHub: @nikki-si</p>
+          <p>📍 Москва, Россия</p>
+        </div>
+      </section>
+    </main>
+
+
+    <dialog id="contactModal">
+      <div class="modal-header">
+        <h2>Форма обратной связи</h2>
+      </div>
+      <div class="modal-content">
+        <form id="feedbackForm" method="dialog">
+          <div class="form-group">
+            <label for="name">Имя<span class="required">*</span></label>
+            <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+          </div>
+          <div class="form-group">
+            <label for="email">Email<span class="required">*</span></label>
+            <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+          </div>
+          <div class="form-group">
+            <label for="message">Сообщение<span class="required">*</span></label>
+            <textarea id="message" name="message" required placeholder="Ваше сообщение..."></textarea>
+          </div>
+          <div class="modal-actions">
+            <button type="submit" class="btn btn-secondary">Отмена</button>
+            <button type="button" class="btn btn-primary" onclick="submitForm()">Отправить</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <footer class="footer">
+      <p class="footer__text">&copy; 2025 Контакты</p>
+    </footer>
+  </div>
+
+  <script>
+    function submitForm() {
+      const form = document.getElementById('feedbackForm');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      alert('Спасибо! Ваше сообщение отправлено.');
+      contactModal.close();
+      form.reset();
+    }
+
+    document.getElementById('contactModal').addEventListener('click', function(e) {
+      if (e.target === this) this.close();
+    });
+  </script>
+</body>
+</html>
