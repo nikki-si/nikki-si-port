@@ -1,58 +1,38 @@
-
 :root {
-  --color-main: #e3f2fd;        
-  --color-accent: #4fc3f7;      
+  --color-main: #e3f2fd;
+  --color-accent: #4fc3f7;
   --color-light: #ffffff;
   --color-dark: #0288d1;
   --color-text: #01579b;
-  --color-wave: #b3e5fc;
-  --color-foam: #e1f5fe;
   --shadow: 0 8px 25px rgba(79, 195, 247, 0.3);
   --radius: 24px;
   --space-sm: 12px;
   --space-md: 24px;
   --space-lg: 36px;
-  --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition: all 0.35s ease;
 }
 
-
-body::before {
-  content: "☁️ ☁️";
-  position: fixed;
-  top: 15%;
-  left: 5%;
-  font-size: 4.2rem;
-  opacity: 0.2;
-  z-index: -1;
-  pointer-events: none;
+/* === Фон: облака + море (изображения) === */
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--color-text);
+  background:
+    url('../images/bg-clouds.jpg') no-repeat top left,
+    url('../images/bg-sea.jpg') no-repeat bottom right,
+    var(--color-main);
+  background-size: 28%, 32%, auto;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+  background-position: 5% 10%, 90% 90%;
+  margin: 0;
+  padding: 0;
 }
-body::after {
-  content: "🌊 🐚 💧 🌊";
-  position: fixed;
-  bottom: 5%;
-  right: 3%;
-  font-size: 2.8rem;
-  opacity: 0.18;
-  z-index: -1;
-  pointer-events: none;
-  transform: rotate(-5deg);
-}
-
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  line-height: 1.6;
-  color: var(--color-text);
-  background: var(--color-main);
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(179, 229, 252, 0.25) 0%, transparent 30%),
-    radial-gradient(circle at 80% 70%, rgba(129, 199, 132, 0.1) 0%, transparent 25%);
 }
 
 .page {
@@ -63,23 +43,21 @@ body {
   flex-direction: column;
 }
 
-
+/* Шапка */
 .header {
   background: linear-gradient(135deg, #b3e5fc, #e1f5fe);
   color: var(--color-text);
   padding: var(--space-lg);
   text-align: center;
   border-bottom: 3px dashed var(--color-accent);
-  position: relative;
 }
-.header__title::after {
-  content: " 💙🌊";
+.header__title {
+  font-size: 1.8rem;
 }
 
-
+/* Навигация */
 .nav {
   background: var(--color-dark);
-  border-radius: 0 0 var(--radius) var(--radius);
 }
 .nav__list {
   list-style: none;
@@ -97,38 +75,20 @@ body {
   color: white;
   text-decoration: none;
   transition: var(--transition);
-  font-weight: 600;
-  position: relative;
 }
 .nav__link:hover,
 .nav__item--active .nav__link {
   background: var(--color-accent);
-  transform: translateY(-3px);
-}
-.nav__link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 3px;
-  background: white;
-  transition: width 0.3s, left 0.3s;
-  border-radius: 2px;
-}
-.nav__link:hover::after,
-.nav__item--active .nav__link::after {
-  width: 60%;
-  left: 20%;
+  font-weight: bold;
 }
 
-
+/* Основной контент */
 .main {
   padding: var(--space-lg);
   flex: 1;
 }
 
-
+/* Профиль */
 .profile__card {
   display: flex;
   align-items: center;
@@ -137,17 +97,7 @@ body {
   padding: var(--space-lg);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  border: 3px solid var(--color-foam);
-  position: relative;
-  overflow: hidden;
-}
-.profile__card::before {
-  content: "✨";
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.4rem;
-  opacity: 0.6;
+  border: 3px solid var(--color-accent);
 }
 .profile__photo {
   width: 170px;
@@ -155,12 +105,7 @@ body {
   border-radius: 50%;
   border: 5px solid var(--color-accent);
   object-fit: cover;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-  animation: float 4s ease-in-out infinite;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 .profile__info {
   flex: 1;
@@ -175,11 +120,8 @@ body {
   font-size: 1.3rem;
   margin-bottom: var(--space-sm);
 }
-.profile__desc::before {
-  content: "👋 ";
-}
-.profile__desc::after {
-  content: " 💻";
+.profile__desc {
+  margin-bottom: var(--space-md);
 }
 .profile__resume-btn {
   display: inline-block;
@@ -190,24 +132,17 @@ body {
   border-radius: 50px;
   font-weight: bold;
   transition: var(--transition);
-  box-shadow: 0 6px 15px rgba(79, 195, 247, 0.4);
-  position: relative;
-  overflow: hidden;
 }
 .profile__resume-btn:hover {
   background: var(--color-dark);
-  transform: scale(1.07);
-}
-.profile__resume-btn::after {
-  content: " 📄";
+  transform: scale(1.05);
 }
 
-
-.skills__title::before {
-  content: "🛠️ ";
-}
-.skills__title::after {
-  content: " 💙";
+/* Навыки */
+.skills__title {
+  font-size: 1.5rem;
+  color: var(--color-dark);
+  margin-bottom: var(--space-md);
 }
 .skills__list {
   display: flex;
@@ -225,7 +160,6 @@ body {
   position: relative;
   text-align: center;
   box-shadow: var(--shadow);
-  border: 2px solid rgba(255,255,255,0.3);
 }
 .skill__percent {
   position: absolute;
@@ -239,14 +173,12 @@ body {
 .skill--bootstrap { background: #039be5; }
 .skill--react { background: #0288d1; }
 
-
-.projects__title::before,
-.projects-page__title::before {
-  content: "📁 ";
-}
-.projects__title::after,
-.projects-page__title::after {
-  content: " 🌊";
+/* Проекты */
+.projects__title,
+.projects-page__title {
+  font-size: 1.5rem;
+  color: var(--color-dark);
+  margin-bottom: var(--space-md);
 }
 .projects__grid {
   display: grid;
@@ -260,18 +192,9 @@ body {
   box-shadow: var(--shadow);
   border-top: 5px solid var(--color-accent);
   transition: var(--transition);
-  position: relative;
-}
-.project-card::before {
-  content: "💡";
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  opacity: 0.7;
 }
 .project-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(79, 195, 247, 0.5);
 }
 .project-card__title {
   color: var(--color-dark);
@@ -281,7 +204,7 @@ body {
   color: #555;
 }
 
-
+/* Фильтры */
 .projects-page__filters {
   display: flex;
   gap: var(--space-sm);
@@ -298,12 +221,6 @@ body {
   cursor: pointer;
   font-weight: 600;
   transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-.filter-btn::before {
-  content: "🔍";
-  margin-right: 6px;
 }
 .filter-btn:hover,
 .filter-btn--active {
@@ -312,22 +229,46 @@ body {
   transform: scale(1.05);
 }
 
-
-.diary__title::before {
-  content: "📓 ";
+/* Дневник */
+.diary__title {
+  font-size: 1.5rem;
+  color: var(--color-dark);
+  margin-bottom: var(--space-md);
 }
-.diary__title::after {
-  content: " 📈";
+.diary__entries {
+  list-style: none;
+  margin-bottom: var(--space-lg);
 }
-.diary__entry--done::before {
-  content: "✅ ";
+.diary__entry {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid #eee;
 }
-.diary__entry--in-progress::before {
-  content: "⏳ ";
+.diary__date {
+  font-weight: bold;
+  color: var(--color-accent);
+}
+.diary__entry--done {
+  color: #2e7d32;
+}
+.diary__entry--in-progress {
+  color: #f57c00;
+}
+.diary__courses-title {
+  margin: var(--space-lg) 0 var(--space-md);
+  color: var(--color-dark);
+}
+.diary__course {
+  margin-bottom: var(--space-md);
+}
+.diary__course-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-weight: bold;
 }
 .diary__progress-bar {
   height: 10px;
-  background: var(--color-foam);
+  background: #e0f7fa;
   border-radius: 5px;
   overflow: hidden;
 }
@@ -337,12 +278,11 @@ body {
   border-radius: 5px;
 }
 
-
-.contacts__title::before {
-  content: "💌 ";
-}
-.contacts__title::after {
-  content: " 📩";
+/* Контакты */
+.contacts__title {
+  font-size: 1.5rem;
+  color: var(--color-dark);
+  margin-bottom: var(--space-md);
 }
 .contacts__btn {
   padding: 14px 32px;
@@ -353,18 +293,20 @@ body {
   cursor: pointer;
   font-weight: bold;
   transition: var(--transition);
-  box-shadow: var(--shadow);
-  font-size: 1.1rem;
+  margin-bottom: var(--space-md);
 }
 .contacts__btn:hover {
   background: var(--color-dark);
   transform: scale(1.07);
 }
-.contacts__btn::after {
-  content: " ✨";
+.contacts__info {
+  background: var(--color-light);
+  padding: var(--space-md);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
-
+/* === Модальное окно — ЦЕНТРИРОВАНО === */
 dialog {
   border: none;
   border-radius: var(--radius);
@@ -387,13 +329,12 @@ dialog::backdrop {
   color: var(--color-text);
   padding: var(--space-md);
   text-align: center;
-  position: relative;
-}
-.modal-header h2::after {
-  content: " 💙";
 }
 .modal-content {
   padding: var(--space-lg);
+}
+.form-group {
+  margin-bottom: var(--space-md);
 }
 .form-group label {
   display: block;
@@ -401,21 +342,26 @@ dialog::backdrop {
   font-weight: 600;
 }
 .form-group input,
-.form-group textarea,
-.form-group select {
+.form-group textarea {
   width: 100%;
   padding: 14px;
-  border: 2px solid var(--color-foam);
+  border: 2px solid #e0f7fa;
   border-radius: 14px;
   font-size: 1rem;
   transition: var(--transition);
 }
 .form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
+.form-group textarea:focus {
   outline: none;
   border-color: var(--color-accent);
   box-shadow: 0 0 0 4px rgba(79, 195, 247, 0.35);
+}
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.required {
+  color: #d32f2f;
 }
 .modal-actions {
   display: flex;
@@ -430,7 +376,6 @@ dialog::backdrop {
   cursor: pointer;
   font-weight: bold;
   transition: var(--transition);
-  font-size: 1rem;
 }
 .btn-primary {
   background: var(--color-accent);
@@ -443,13 +388,13 @@ dialog::backdrop {
 .btn-secondary {
   background: #f0f9ff;
   color: var(--color-text);
-  border: 2px solid var(--color-foam);
+  border: 2px solid #e0f7fa;
 }
 .btn-secondary:hover {
   background: #e1f5fe;
 }
 
-
+/* Подвал */
 .footer {
   background: linear-gradient(135deg, #e1f5fe, #b3e5fc);
   color: var(--color-text);
@@ -457,26 +402,9 @@ dialog::backdrop {
   padding: var(--space-md);
   margin-top: auto;
   border-top: 3px dotted var(--color-accent);
-  position: relative;
-}
-.footer::before {
-  content: "💙";
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.7;
-}
-.footer::after {
-  content: "💙";
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.7;
 }
 
-
+/* Адаптивность */
 @media (max-width: 768px) {
   .profile__card {
     flex-direction: column;
@@ -490,9 +418,5 @@ dialog::backdrop {
   }
   .btn {
     width: 100%;
-  }
-  body::before,
-  body::after {
-    font-size: 2.5rem;
   }
 }
